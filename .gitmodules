@@ -1,0 +1,6 @@
+[submodule "Aind.Behavior.JustFrames"]
+	path = Aind.Behavior.JustFrames
+	url = https://github.com/AllenNeuralDynamics/Aind.Behavior.JustFrames
+[submodule "Aind.Physiology.Fip"]
+	path = Aind.Physiology.Fip
+	url = https://github.com/AllenNeuralDynamics/Aind.Physiology.Fip
