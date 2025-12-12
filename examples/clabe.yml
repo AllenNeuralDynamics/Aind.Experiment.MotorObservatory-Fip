@@ -2,3 +2,6 @@
 
 data_dir: C:/Data
 allow_dirty: true
+
+xml_rpc_client:
+  token: 42
