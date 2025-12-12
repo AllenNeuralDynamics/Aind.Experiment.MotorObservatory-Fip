@@ -1,0 +1,16 @@
+[project]
+name = "aind-experiment-motor-observatory-fip"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aind-behavior-just-frames",
+    "aind-physiology-fip",
+    "aind-clabe",
+    "ruff"
+]
+
+
+[tool.uv.sources]
+aind-behavior-just-frames = { path = "./Aind.Behavior.JustFrames" }
+aind-physiology-fip = { path = "./Aind.Physiology.Fip" }
