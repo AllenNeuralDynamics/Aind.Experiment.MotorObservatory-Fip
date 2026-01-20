@@ -1,0 +1,1 @@
+uv run clabe xml-rpc-server --token 42 --port 8000 --file-transfer-dir "./local/tmp-file-transfer"
