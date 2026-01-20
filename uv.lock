@@ -69,7 +69,7 @@ wheels = [
 
 [[package]]
 name = "aind-clabe"
-version = "0.9.1"
+version = "0.10.0rc2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aind-behavior-services" },
@@ -81,9 +81,9 @@ dependencies = [
     { name = "rich" },
     { name = "semver" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8c/ab/7f27c98f4f2bf7062548b4d076ae2ec9d00f7e77640a1573f7a896c44835/aind_clabe-0.9.1.tar.gz", hash = "sha256:c6ae4fb781e5b27af044ffcbd413d7c5532e3a272595b74266ab280d86a90217", size = 66521, upload-time = "2025-12-11T23:04:33.544Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4b/17/527b7ca1a699e75a27c8cb1883823516564af83df0d8ede17293314da7f2/aind_clabe-0.10.0rc2.tar.gz", hash = "sha256:53ba1b36202cb6271c0fc4070cbd95e4f678776188dcb6626cfaecb3217d5f4b", size = 69128, upload-time = "2026-01-19T04:06:31.624Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/87/95a2e9d73c7421bdf37c4d67aa0ebd66d455a6d81cb63acc70053334b162/aind_clabe-0.9.1-py3-none-any.whl", hash = "sha256:d7197635c842acafaf83ad4a6eb686a387a85c9ee51d96e2c200857dc635f95d", size = 88869, upload-time = "2025-12-11T23:04:32.451Z" },
+    { url = "https://files.pythonhosted.org/packages/24/ec/b930a0ebf1d3c2685c79de392fa45adab68e387bc4ec029e2b1b782ead25/aind_clabe-0.10.0rc2-py3-none-any.whl", hash = "sha256:6107b227861c64a8cc4a37a4a608d24078d954e4f1305e9813b9d72292de9edb", size = 92166, upload-time = "2026-01-19T04:06:30.241Z" },
 ]
 
 [[package]]
@@ -100,7 +100,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "aind-behavior-just-frames", directory = "Aind.Behavior.JustFrames" },
-    { name = "aind-clabe" },
+    { name = "aind-clabe", specifier = ">=0.10.0rc0" },
     { name = "aind-physiology-fip", extras = ["data"], directory = "Aind.Physiology.Fip" },
     { name = "ruff" },
 ]
