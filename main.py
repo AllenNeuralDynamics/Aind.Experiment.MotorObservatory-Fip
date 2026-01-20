@@ -180,3 +180,10 @@ def _make_robocopy_from_rig(
     return robocopy.RobocopyService(
         source=rig.data_directory / session_name, settings=robocopy_settings
     )
+
+
+if __name__ == "__main__":
+    from clabe.launcher import LauncherCliArgs
+
+    launcher = Launcher(settings=LauncherCliArgs())
+    launcher.run_experiment(my_experiment)
