@@ -6,7 +6,7 @@ requires-python = ">=3.13"
 dependencies = [
     "aind-behavior-just-frames",
     "aind-physiology-fip[data]",
-    "aind-clabe[aind-services]>=0.10.0rc2",
+    "aind-clabe[aind-services]>=0.10.0rc3",
     "aind-watchdog-service>=0.1.6.dev8",
     "ruff"
 ]

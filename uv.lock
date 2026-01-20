@@ -73,7 +73,7 @@ wheels = [
 
 [[package]]
 name = "aind-clabe"
-version = "0.10.0rc2"
+version = "0.10.0rc3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aind-behavior-services" },
@@ -85,9 +85,9 @@ dependencies = [
     { name = "rich" },
     { name = "semver" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/4b/17/527b7ca1a699e75a27c8cb1883823516564af83df0d8ede17293314da7f2/aind_clabe-0.10.0rc2.tar.gz", hash = "sha256:53ba1b36202cb6271c0fc4070cbd95e4f678776188dcb6626cfaecb3217d5f4b", size = 69128, upload-time = "2026-01-19T04:06:31.624Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/16/11/7124565041462236830ca8182a957b9166ece65360b603c3b8f12aa96aad/aind_clabe-0.10.0rc3.tar.gz", hash = "sha256:fb2bdfde7aee173e88c7571b1c10603b25e15dd7fa9c81fc534acff559b58699", size = 69120, upload-time = "2026-01-20T20:32:54.921Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/24/ec/b930a0ebf1d3c2685c79de392fa45adab68e387bc4ec029e2b1b782ead25/aind_clabe-0.10.0rc2-py3-none-any.whl", hash = "sha256:6107b227861c64a8cc4a37a4a608d24078d954e4f1305e9813b9d72292de9edb", size = 92166, upload-time = "2026-01-19T04:06:30.241Z" },
+    { url = "https://files.pythonhosted.org/packages/db/bd/af8837fe6f87cd7240499b4698a00b583f18dd3df111576049c019e44b17/aind_clabe-0.10.0rc3-py3-none-any.whl", hash = "sha256:02959ba423852d3f817b6db619fd691dab17907843c15a982f8a34731b3ac2d0", size = 92171, upload-time = "2026-01-20T20:32:54.047Z" },
 ]
 
 [package.optional-dependencies]
@@ -162,7 +162,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "aind-behavior-just-frames", directory = "Aind.Behavior.JustFrames" },
-    { name = "aind-clabe", extras = ["aind-services"], specifier = ">=0.10.0rc2" },
+    { name = "aind-clabe", extras = ["aind-services"], specifier = ">=0.10.0rc3" },
     { name = "aind-physiology-fip", extras = ["data"], directory = "Aind.Physiology.Fip" },
     { name = "aind-watchdog-service", specifier = ">=0.1.6.dev8" },
     { name = "ruff" },
