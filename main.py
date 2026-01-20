@@ -151,14 +151,15 @@ async def my_experiment(launcher: Launcher) -> None:
     )
     robocopy_tasks = {
         satellite.rig.rig_name: satellite.xml_rpc_executor.run_async(
-            _make_robocopy_from_rig(
+            _make_robocopy_from_satellite_rig(
                 settings, satellite.rig, launcher.session.session_name
             ).command
         )
         for satellite in satellites.values()
     }
-    robocopy_tasks[rig_just_frames.rig_name] = _make_robocopy_from_rig(
-        settings, rig_just_frames, launcher.session.session_name
+    robocopy_tasks[rig_just_frames.rig_name] = robocopy.RobocopyService(
+        source=rig_just_frames.data_directory / launcher.session.session_name,
+        settings=settings,
     ).run_async()
     await asyncio.gather(*robocopy_tasks.values())
     return
@@ -172,14 +173,27 @@ class SatelliteRigConnection:
     bonsai_app: BonsaiApp
 
 
-def _make_robocopy_from_rig(
-    robocopy_settings: robocopy.RobocopySettings,
-    rig: AindJustFramesRig | SatelliteRig,
-    session_name: str,
+def _make_robocopy_from_satellite_rig(
+    robocopy_settings: robocopy.RobocopySettings, rig: SatelliteRig, session_name: str
 ) -> robocopy.RobocopyService:
-    return robocopy.RobocopyService(
-        source=rig.data_directory / session_name, settings=robocopy_settings
-    )
+    # For videos, we flatten everything in the behavior-videos directory
+    # Everything else gets dumped in the behavior directory under .satellites/rig_name/
+    source = {
+        rig.data_directory / session_name / "behavior-videos": Path(
+            robocopy_settings.destination
+        )
+        / "behavior-videos",
+        rig.data_directory / session_name / "behavior": Path(
+            robocopy_settings.destination
+        )
+        / "behavior"
+        / "satellites"
+        / rig.rig_name,
+    }
+    settings = robocopy_settings.model_copy(
+        update={"destination": None}
+    )  # we will set destination per-path
+    return robocopy.RobocopyService(source=source, settings=settings)
 
 
 if __name__ == "__main__":
