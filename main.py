@@ -59,7 +59,7 @@ async def my_experiment(launcher: Launcher) -> None:
         for s in rig_just_frames.satellite_rigs:
             xml_client = clabe.xml_rpc.XmlRpcClient(
                 settings=clabe.xml_rpc.XmlRpcClientSettings(
-                    server_url=f"{s.zmq_protocol_config.address}:8000",
+                    server_url=f"http://{s.zmq_protocol_config.address}:8000",
                     token="42",
                 )
             )
