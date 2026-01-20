@@ -70,16 +70,12 @@ async def my_experiment(launcher: Launcher) -> None:
                 s, f"{SATELLITE_UPLOAD_ROOT}/{session.session_name}_rig.json"
             )
 
-            assert this_session.filename is not None, (
-                "Failed to upload session to satellite rig."
-            )
-            assert this_rig.filename is not None, (
-                "Failed to upload rig to satellite rig."
-            )
+            assert this_session.success, "Failed to upload session to satellite rig."
+            assert this_rig.success, "Failed to upload rig to satellite rig."
 
             additional_externalized_properties = {
-                "RigPath": this_rig.filename,
-                "SessionPath": this_session.filename,
+                "RigPath": this_rig.path,
+                "SessionPath": this_session.path,
             }
             satellite_bonsai_app = BonsaiApp(
                 workflow=Path(r"./Aind.Behavior.JustFrames/src/main.bonsai"),
