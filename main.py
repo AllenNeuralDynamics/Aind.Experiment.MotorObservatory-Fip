@@ -55,7 +55,6 @@ async def my_experiment(launcher: Launcher) -> None:
     has_satellites = len(rig_just_frames.satellite_rigs) > 0
     satellites: dict[str, SatelliteRigConnection] = {}
     if has_satellites:
-        SATELLITE_UPLOAD_ROOT = "."
         for s in rig_just_frames.satellite_rigs:
             xml_client = clabe.xml_rpc.XmlRpcClient(
                 settings=clabe.xml_rpc.XmlRpcClientSettings(
@@ -64,11 +63,9 @@ async def my_experiment(launcher: Launcher) -> None:
                 )
             )
             this_session = xml_client.upload_model(
-                session, f"{SATELLITE_UPLOAD_ROOT}/{session.session_name}_session.json"
+                session, f"{session.session_name}_session.json"
             )
-            this_rig = xml_client.upload_model(
-                s, f"{SATELLITE_UPLOAD_ROOT}/{session.session_name}_rig.json"
-            )
+            this_rig = xml_client.upload_model(s, f"{session.session_name}_rig.json")
 
             assert this_session.success, "Failed to upload session to satellite rig."
             assert this_rig.success, "Failed to upload rig to satellite rig."
