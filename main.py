@@ -16,11 +16,9 @@ from aind_physiology_fip.rig import AindPhysioFipRig
 
 logger = logging.getLogger(__name__)
 
-logger = logging.getLogger(__name__)
 
-
-@experiment(name="just_frames_with_satellites")
-async def my_experiment(launcher: Launcher) -> None:
+@experiment()
+async def just_frames_with_satellites(launcher: Launcher) -> None:
     # Get configuration from pickers
     picker_just_frames = DefaultBehaviorPicker(
         launcher=launcher,
@@ -51,7 +49,7 @@ async def my_experiment(launcher: Launcher) -> None:
         ]
     ).run()
 
-    # Start assemblying rig communication
+    # Start assembling rig communication
     has_satellites = len(rig_just_frames.satellite_rigs) > 0
     satellites: dict[str, SatelliteRigConnection] = {}
     if has_satellites:
@@ -192,5 +190,4 @@ def _make_robocopy_from_satellite_rig(
 if __name__ == "__main__":
     from clabe.launcher import LauncherCliArgs
 
-    launcher = Launcher(settings=LauncherCliArgs())
-    launcher.run_experiment(my_experiment)
+    Launcher(settings=LauncherCliArgs()).run_experiment(just_frames_with_satellites)
