@@ -73,7 +73,7 @@ async def just_frames_with_satellites(launcher: Launcher) -> None:
                 "SessionPath": this_session.path,
             }
             satellite_bonsai_app = BonsaiApp(
-                workflow=Path(r"./Aind.Behavior.JustFrames/src/main.bonsai"),
+                workflow=Path(r"./Aind.Behavior.JustFrames/src/satellite.bonsai"),
                 executable=Path(r"./Aind.Behavior.JustFrames/bonsai/bonsai.exe"),
                 additional_externalized_properties=additional_externalized_properties,
             )
