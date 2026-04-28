@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Type
 
 import clabe.xml_rpc
-from aind_behavior_services.session import AindBehaviorSessionModel
+from aind_behavior_services.session import Session
 from clabe import resource_monitor
 from clabe.apps import AindBehaviorServicesBonsaiApp, BonsaiApp
 from clabe.data_transfer import robocopy
@@ -28,7 +28,7 @@ class SatelliteRigConnection:
 
 
 def _setup_satellite_rig(
-    satellite_rig: SatelliteRig, session: AindBehaviorSessionModel
+    satellite_rig: SatelliteRig, session: Session
 ) -> SatelliteRigConnection:
     """Set up a satellite rig with XML-RPC client and Bonsai app."""
     xml_client = clabe.xml_rpc.XmlRpcClient(
@@ -108,7 +108,7 @@ async def acquisition(launcher: Launcher) -> None:
             config_library_dir=r"\\allen\aind\scratch\AindBehavior.db\AindPhysiologyFip"
         ),
     )
-    session = picker_just_frames.pick_session(AindBehaviorSessionModel)
+    session = picker_just_frames.pick_session(Session)
 
     rig_just_frames = picker_just_frames.pick_rig(AindJustFramesRig)
     rig_fip = picker_fip.pick_rig(AindPhysioFipRig)
@@ -183,8 +183,8 @@ class _CalibrationPicker(DefaultBehaviorPicker):
     """Picker specialized for calibration sessions that skips subject selection."""
 
     def pick_session(
-        self, model: Type[AindBehaviorSessionModel] = AindBehaviorSessionModel
-    ) -> AindBehaviorSessionModel:
+        self, model: Type[Session] = Session
+    ) -> Session:
         experimenter = self.prompt_experimenter(strict=True)
         subject = "calibration"
 
@@ -215,7 +215,7 @@ async def calibration(launcher: Launcher) -> None:
         ),
     )
 
-    session = picker_just_frames.pick_session(AindBehaviorSessionModel)
+    session = picker_just_frames.pick_session(Session)
 
     rig_just_frames = picker_just_frames.pick_rig(AindJustFramesRig)
 
@@ -272,8 +272,8 @@ async def calibration(launcher: Launcher) -> None:
 
     # Copy data to central storage
     launcher.copy_logs()
-    robocopy_tasks = _create_robocopy_tasks(launcher, satellites, rig_just_frames)
-    await asyncio.gather(*robocopy_tasks.values())
+    #robocopy_tasks = _create_robocopy_tasks(launcher, satellites, rig_just_frames)
+    #await asyncio.gather(*robocopy_tasks.values())
     return
 
 
